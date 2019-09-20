@@ -5,20 +5,32 @@
         L_NO_TOUCH = false;
         L_DISABLE_3D = false;
     </script>
-    <!-- Load Leaflet from CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+<!-- Load Leaflet from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+  crossorigin=""></script>
 
-    <!-- Load Esri Leaflet from CDN -->
-    <script src="https://unpkg.com/esri-leaflet@2.3.0/dist/esri-leaflet.js" integrity="sha512-1tScwpjXwwnm6tTva0l0/ZgM3rYNbdyMj5q6RSQMbNX6EUMhYDE3pMRGZaT41zHEvLoWEK7qFEJmZDOoDMU7/Q==" crossorigin=""></script>
 
-    <!-- Load Esri Leaflet Geocoder from CDN -->
-    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.14/dist/esri-leaflet-geocoder.css" integrity="sha512-v5YmWLm8KqAAmg5808pETiccEohtt8rPVMGQ1jA6jqkWVydV5Cuz3nJ9fQ7ittSxvuqsvI9RSGfVoKPaAJZ/AQ==" crossorigin="">
-    <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.14/dist/esri-leaflet-geocoder.js" integrity="sha512-uK5jVwR81KVTGe8KpJa1QIN4n60TsSV8+DPbL5wWlYQvb0/nYNgSOg9dZG6ViQhwx/gaMszuWllTemL+K+IXjg==" crossorigin=""></script>
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@2.3.0/dist/esri-leaflet.js"
+  integrity="sha512-1tScwpjXwwnm6tTva0l0/ZgM3rYNbdyMj5q6RSQMbNX6EUMhYDE3pMRGZaT41zHEvLoWEK7qFEJmZDOoDMU7/Q=="
+  crossorigin=""></script>
+
+
+  <!-- Load Esri Leaflet Geocoder from CDN -->
+  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.14/dist/esri-leaflet-geocoder.css"
+    integrity="sha512-v5YmWLm8KqAAmg5808pETiccEohtt8rPVMGQ1jA6jqkWVydV5Cuz3nJ9fQ7ittSxvuqsvI9RSGfVoKPaAJZ/AQ=="
+    crossorigin="">
+  <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.14/dist/esri-leaflet-geocoder.js"
+    integrity="sha512-uK5jVwR81KVTGe8KpJa1QIN4n60TsSV8+DPbL5wWlYQvb0/nYNgSOg9dZG6ViQhwx/gaMszuWllTemL+K+IXjg=="
+    crossorigin=""></script>
     <script src="https://cdn.bootcss.com/leaflet-hash/0.2.1/leaflet-hash.js"></script>
     <meta charset=utf-8 />
 
-
+    
     <style>
         html,
         body {
@@ -36,32 +48,25 @@
             right: 0;
             left: 0;
         }
-        
         .state-b,
-        .state-a {
-            transition-duration: .5s;
-            transform: scaleY(0);
-            position: absolute;
-            display: block;
-            top: 0;
-            width: 100%;
-        }
-        
-        .state-b {
-            transform-origin: 50% 0;
-        }
-        
-        .state-a {
-            transform-origin: 50% 100%;
-        }
-        
-        .state-b.b-active {
-            transform: scaleY(1);
-        }
-        
-        .state-a.a-active {
-            transform: scaleY(1);
-        }
+        .state-a{
+          transition-duration: .5s;
+          transform: scaleY(0);
+          position: absolute;
+          display: block;
+          top: 0;
+          width: 100%;}
+
+        .state-b{
+          transform-origin: 50% 0; }
+        .state-a{
+          transform-origin: 50% 100%; }
+
+        .state-b.b-active{
+          transform: scaleY(1); }
+
+        .state-a.a-active{
+          transform: scaleY(1); }
     </style>
 
 
@@ -73,13 +78,15 @@
 
 </body>
 <script>
+
+
     var pos = false;
     //Taipei
     var default_lat = 25.03893;
     var default_lon = 121.51760;
 
     mapper(default_lat, default_lon, 0);
-
+	
 
     function mapper(lat, lon, radius) {
         var dt = new Date();
@@ -104,25 +111,13 @@
             setView: true,
             enableHighAccuracy: true
         });
-        var marker = L.circleMarker(map.getCenter(), {
-            radius: 6,
-            color: '#ff80d5',
-            interactive: false
-        });
-        var circle = L.circle(map.getCenter(), 0, {
-            stroke: false,
-            color: '#4dffff',
-            interactive: false
-        });
+        var marker = L.circleMarker(map.getCenter(), {radius: 6, color: '#ff80d5', interactive: false});
+        var circle = L.circle(map.getCenter(), 0, {stroke: false, color: '#4dffff', interactive: false});
         var trace = null;
-
         function onLocationFound(e) {
             var radius = e.accuracy / 2;
-            if (trace == null) {
-                trace = L.polyline([map.getCenter()], {
-                    color: '#99ccff',
-                    opacity: 0.3
-                });
+            if (trace == null){
+                trace = L.polyline([map.getCenter()], {color: '#99ccff', opacity: 0.3});
             };
             marker.addTo(map);
             trace.addTo(map);
@@ -139,8 +134,8 @@
         };
         map.on('locationfound', onLocationFound, onLocationError);
 
-        var he_appid = 'JDuZcEECeUBXGkFT6zp9';
-        var he_appcode = 'pTa6-IjR6ElKf0kjAolO2A';
+        var he_appid = 'inMaDeyec4Eyevupache';
+        var he_appcode = '-T00kPbHqMe2-6e94f-Grw';
 
         var here_base_day = L.tileLayer(
             'https://{s}.base.maps.cit.api.here.com/maptile/2.1/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?app_id=' + he_appid + '&app_code=' + he_appcode, {
@@ -153,8 +148,8 @@
             }
         ).addTo(map);
 
-        var google_base_day = L.tileLayer(
-            'https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i485193064!3m12!2szh-TW!3sUS!5e18!12m4!1e68!2m2!1sset!2sRoadmap!12m3!1e37!2m1!1ssmartmaps!4e0&key=AIzaSyDk4C4EBWgjuL1eBnJlu1J80WytEtSIags&token=' + sec, {
+      var google_base_day = L.tileLayer(
+			'https://maps.googleapis.com/maps/vt?pb=!1m5!1m4!1i{z}!2i{x}!3i{y}!4i256!2m3!1e0!2sm!3i485193592!3m17!2szh-TW!3sUS!5e18!12m4!1e68!2m2!1sset!2sRoadmap!12m3!1e37!2m1!1ssmartmaps!12m4!1e26!2m2!1sstyles!2zcy50OjIxfHAudjpvZmYscy50OjIwfHAudjpvZmYscy50OjJ8cy5lOmwudHxwLnY6b2ZmLHMudDozM3xwLnY6b2ZmLHMudDozfHMuZTpsfHAudjpvZmYscy50OjN8cy5lOmwuaXxwLnY6b2ZmLHMudDo0fHAudjpvZmYscy50OjZ8cy5lOmwudHxwLnY6b2Zm!4e0&key=AIzaSyDk4C4EBWgjuL1eBnJlu1J80WytEtSIags&token=' + sec, {
                 "attribution": "Google",
                 "detectRetina": true,
                 "maxZoom": 20,
@@ -163,7 +158,7 @@
             }
         );
 
-        var nlsc = L.tileLayer(
+		var nlsc = L.tileLayer(
             'https://wmts.nlsc.gov.tw/wmts/EMAP5/default/EPSG:3857/{z}/{y}/{x}', {
                 "attribution": "wmts.nlsc.gov.tw",
                 "detectRetina": false,
@@ -172,29 +167,21 @@
                 "noWrap": false,
             }
         )
-
-        var nlsc = L.tileLayer(
-            'https://wmts.nlsc.gov.tw/wmts/EMAP5/default/EPSG:3857/{z}/{y}/{x}', {
-                "attribution": "wmts.nlsc.gov.tw",
-                "detectRetina": false,
-                "maxZoom": 20,
+		
+		var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+				"maxZoom": 20,
                 "minZoom": 1,
-                "noWrap": false,
-            }
-        )
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+		});
 
-        var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        });
-
-
+      
         var layer_con = {
             base_layers: {
                 "HERE Map": here_base_day
             },
             overlays: {
-                "Open Street Map": osm,
-                "Google Map": google_base_day,
+				"Open Street Map": osm,
+				"Google Map": google_base_day,
                 "wmts.nlsc.gov.tw": nlsc
             }
         };
@@ -208,21 +195,19 @@
             }
         ).addTo(map);
 
-        L.control.scale({
-            position: 'bottomleft'
-        }).addTo(map);
+        L.control.scale({position: 'bottomleft'}).addTo(map);
         var hash = new L.Hash(map);
+		
+		var results = L.layerGroup().addTo(map);
 
-        var results = L.layerGroup().addTo(map);
-
-        var searchControl = L.esri.Geocoding.geosearch({
-            position: 'topleft'
-        }).addTo(map);
-        searchControl.on("results", function(data) {
-            results.clearLayers();
-            for (var i = data.results.length - 1; i >= 0; i--) {
-                results.addLayer(L.marker(data.results[i].latlng));
-            }
-        });
-    };
+		var searchControl = L.esri.Geocoding.geosearch({position: 'topleft'}).addTo(map);
+		searchControl.on("results", function(data) {
+		results.clearLayers();
+        for (var i = data.results.length - 1; i >= 0; i--) {
+            results.addLayer(L.marker(data.results[i].latlng));
+        }
+    });
+};
+  
 </script>
+
